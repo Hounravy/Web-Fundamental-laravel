@@ -13,7 +13,7 @@ Home
         <div class="col-lg-8">
           <!-- Nested row for non-featured blog posts-->
           <div class="row">
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
               <!-- Featured blog post-->
               <div class="card mb-4">
                 <a href="./blog.html"
@@ -34,8 +34,8 @@ Home
                   <a class="btn btn-primary" href="./blog.html">Read more →</a>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
+            </div> --}}
+            {{-- <div class="col-lg-6">
               <!-- Blog post-->
               <div class="card mb-4">
                 <a href="./blog.html"
@@ -54,8 +54,10 @@ Home
                   <a class="btn btn-primary" href="./blog.html">Read more →</a>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
+            </div> --}}
+
+            @foreach ($posts as $post)
+              <div class="col-lg-6">
               <!-- Blog post-->
               <div class="card mb-4">
                 <a href="./blog.html"
@@ -65,16 +67,17 @@ Home
                     alt="..."
                 /></a>
                 <div class="card-body">
-                  <div class="small text-muted">January 1, 2022</div>
-                  <h2 class="card-title h4">Post Title</h2>
+                  <div class="small text-muted">{{$post->created_at}}</div>
+                  <h2 class="card-title h4">{{$post->title}}</h2>
                   <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
+                    {{$post->content}}
                   </p>
                   <a class="btn btn-primary" href="./blog.html">Read more →</a>
                 </div>
               </div>
             </div>
+            @endforeach
+            
           </div>
           <!-- Pagination-->
           <nav aria-label="Pagination">

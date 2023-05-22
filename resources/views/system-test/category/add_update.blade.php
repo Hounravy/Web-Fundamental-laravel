@@ -12,7 +12,7 @@ Category
       <div class="row">
         <div class="d-flex justify-content-between mb-2">
           <h3>Create Category</h3>
-          <a class="btn btn-success" href="{{url('category')}}" role="button">Back</a>
+          <a class="btn btn-success" href="{{url('admin/category')}}" role="button">Back</a>
         </div>
         <!-- Blog entries-->
         <div class="col-lg-12">

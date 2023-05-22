@@ -21,17 +21,17 @@ class userSeeder extends Seeder
             [
                 'name' => 'Ravy Houn',
                 'email' => 'ravy@gmail.com',
-                'name' => Hash::make('password')
+                'password' => Hash::make('password'),
             ],
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
-                'name' => Hash::make('password')
+                'password' => Hash::make('password'),
             ],
             [
                 'name' => 'Testing',
                 'email' => 'test@gmail.com',
-                'name' => Hash::make('password')
+                'password' => Hash::make('password'),
             ]
             
            ];

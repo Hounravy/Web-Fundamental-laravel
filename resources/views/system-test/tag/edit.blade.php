@@ -1,6 +1,6 @@
 @extends('system-test.bar')
 @section('title')
-tag
+tag 
 @endsection
 @section('content')
     <!-- Page content-->

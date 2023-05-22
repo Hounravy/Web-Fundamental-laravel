@@ -11,7 +11,7 @@ post
       <div class="row">
         <div class="d-flex justify-content-between mb-2">
           <h3>Create Post</h3>
-          <a class="btn btn-success" href="{{url('post')}}" role="button">Back</a>
+          <a class="btn btn-success" href="{{url('admin/post')}}" role="button">Back</a>
         </div>
         <!-- Blog entries-->
         <div class="col-lg-12">

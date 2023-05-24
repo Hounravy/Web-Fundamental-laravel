@@ -4,6 +4,22 @@
 Home
 @endsection
 
+@push('index_page')
+    <style>
+      .img-post {
+        width: 250px;
+        
+      }
+      .text-post {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+                line-clamp: 2; 
+        -webkit-box-orient: vertical;
+      }
+    </style>
+@endpush
+
 
 @section('content')
 
@@ -62,14 +78,14 @@ Home
               <div class="card mb-4">
                 <a href="./blog.html"
                   ><img
-                    class="card-img-top"
-                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                   class="card-img-top img-post"
+                    src="{{asset('storage/'.$post->thumnail)}}"
                     alt="..."
                 /></a>
                 <div class="card-body">
-                  <div class="small text-muted">{{$post->created_at}}</div>
+                  <div class="small text-muted">{{$post->created_at->format('F d, Y')}}</div>
                   <h2 class="card-title h4">{{$post->title}}</h2>
-                  <p class="card-text">
+                  <p class="card-text text-post">
                     {{$post->content}}
                   </p>
                   <a class="btn btn-primary" href="./blog.html">Read more →</a>
@@ -80,7 +96,7 @@ Home
             
           </div>
           <!-- Pagination-->
-          <nav aria-label="Pagination">
+          {{-- <nav aria-label="Pagination">
             <hr class="my-0" />
             <ul class="pagination justify-content-center my-4">
               <li class="page-item disabled">
@@ -101,7 +117,8 @@ Home
                 <a class="page-link" href="#!">Older</a>
               </li>
             </ul>
-          </nav>
+          </nav> --}}
+          {{ $posts->links() }}
         </div>
         <!-- Side widgets-->
         <div class="col-lg-4">

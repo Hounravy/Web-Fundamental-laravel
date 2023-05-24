@@ -116,4 +116,12 @@ class postController extends Controller
         return redirect()->route('system-test.post.index');
     }
 
+    //article
+
+    public function article($id)
+    {
+        $posts = post::findOrFail($id);
+        return view('system-test.article', ['posts'=>$posts]);
+    }
+
 }

@@ -28,9 +28,6 @@ use Illuminate\Support\Facades\Route;
 //Login
 
 
-Route::post('/authenticate', [loginController::class, 'authenticate'])->name('authenticate');
-Route::post('/logout', [loginController::class, 'logout'])->name('logout');
-Route::get('/login', [loginController::class, 'login'])->name('system-test.login');
 
 
 Route::get('/home',[main_pageController::class, 'home']);
@@ -48,7 +45,14 @@ Route::get('/categ_food',[main_pageController::class, 'categ_food']);
 // Route::get('/blog', function () {
 //     return view('system-test.index');
 // });  
+
+// article
+Route::get('/article/{id}',[postController::class, 'article'])->name('system-test.article'); 
 //route category
+Route::post('/authenticate', [loginController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [loginController::class, 'logout'])->name('logout');
+Route::get('/login', [loginController::class, 'login'])->name('system-test.login');
+
 Route::get('/', [homeController::class, 'index'])->name('system-test.index');
 Route::prefix('admin')->name('system-test.')->middleware('auth')->group(function () {
 
@@ -66,6 +70,7 @@ Route::prefix('admin')->name('system-test.')->middleware('auth')->group(function
     Route::get('/post/{id}',[postController::class, 'edit'])->name('post.edit'); 
     Route::post('/post/store',[postController::class, 'store'])->name('post.store');
     Route::put('/post/{id}',[postController::class, 'update'])->name('post.update');
+    
     
     
     Route::get('/tag',[tagController::class, 'tag'])->name('tag.index');

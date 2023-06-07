@@ -118,7 +118,7 @@ class postController extends Controller
 
     //article
 
-    public function article($id)
+    public function article(Request $request, $id)
     {
         $posts = post::findOrFail($id);
         return view('system-test.article', ['posts'=>$posts]);

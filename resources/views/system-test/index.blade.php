@@ -71,8 +71,8 @@ Home
                 </div>
               </div>
             </div> --}}
-
-            @foreach ($posts as $post)
+            @if ($posts->count())
+              @foreach ($posts as $post)
               <div class="col-lg-6">
               <!-- Blog post-->
               <div class="card mb-4">
@@ -88,11 +88,15 @@ Home
                   <p class="card-text text-post">
                     {{$post->content}}
                   </p>
-                  <a class="btn btn-primary" href="./blog.html">Read more →</a>
+                  <a class="btn btn-primary" href="{{Route('system-test.article', ['id'=>$post->id])}}">Read more →</a>
                 </div>
               </div>
             </div>
             @endforeach
+            @else
+            <h1>No Post Found!!</h1>
+            @endif
+            
             
           </div>
           <!-- Pagination-->
@@ -126,10 +130,19 @@ Home
           <div class="card mb-4">
             <div class="card-header">Search</div>
             <div class="card-body">
-              <div class="input-group">
+              <form method="GET" action="{{Route('system-test.index')}}">
+                @foreach (collect(request()->only(['category_id', 'tag_id'])) as $key=>$value)
+                  <input
+                  class=" form-control"
+                  name="{{$key}}"
+                  value="{{$value}}"
+                  type="hidden">
+                @endforeach
+                <div class="input-group">
                 <input
                   class="form-control"
                   type="text"
+                  name="search"
                   placeholder="Enter search term..."
                   aria-label="Enter search term..."
                   aria-describedby="button-search"
@@ -137,11 +150,13 @@ Home
                 <button
                   class="btn btn-primary"
                   id="button-search"
-                  type="button"
+                  type="submit"
                 >
                   Go!
                 </button>
               </div>
+              </form>
+              
             </div>
           </div>
           <!-- Tags widget-->
@@ -149,20 +164,12 @@ Home
             <div class="card-header">Tags</div>
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-6">
+                @foreach ($side_tage as $side_tages)
+                  <div class="col-sm-6">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#!">Web Design</a></li>
-                    <li><a href="#!">HTML</a></li>
-                    <li><a href="#!">Freebies</a></li>
-                  </ul>
+                    <li><a href="{{Route('system-test.index', ['tag_id'=>$side_tages->id])}}">{{$side_tages->name}}</a></li>
                 </div>
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="#!">JavaScript</a></li>
-                    <li><a href="#!">CSS</a></li>
-                    <li><a href="#!">Tutorials</a></li>
-                  </ul>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>

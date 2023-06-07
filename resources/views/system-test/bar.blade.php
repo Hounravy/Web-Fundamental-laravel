@@ -56,11 +56,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            {{-- @foreach ($nav_category as $nav_bar)
+            @foreach ($nav_category as $nav_bar)
             <li class="nav-item">
               <a class="nav-link" href="{{Route('system-test.index', ['category_id'=>$nav_bar->id])}}">{{$nav_bar->name}}</a>
             </li>
-            @endforeach --}}
+            @endforeach
             <li class="nav-item">
               <a class="nav-link" href="">Link</a>
             </li>
